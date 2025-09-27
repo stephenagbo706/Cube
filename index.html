@@ -1,0 +1,205 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cube Auth Forms</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #f3f6fc;
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+      max-width: 1100px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .card {
+      background: #ffffff;
+      width: 300px;
+      padding: 30px 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .card img {
+      width: 120px;
+      margin: 0 auto 5px;
+      display: block;
+    }
+
+     .logo-text {
+  font-size: 28px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(45deg, #fe8f4f, #db8515, #f3bc09, #7a6930);
+  -webkit-background-clip: text;   /* Chrome, Safari, Edge */
+  background-clip: text;           /* Standard property */
+  -webkit-text-fill-color: transparent;
+  color: transparent;              /* Fallback for non-webkit */
+  margin-bottom: 15px;
+}
+
+    .card h2 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .input-box {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    .input-box input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 14px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .input-box input:focus {
+      border-color: #f0cf17ef;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #df6d11;
+      color: #ffffff;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 5px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background:  #c99c17;
+    }
+
+    .small-text {
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    .small-text a {
+      color: #dba70b;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .social-login {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 15px;
+    }
+
+    .social-login button {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sign In -->
+    <div class="card" id="signinCard">
+      <img src="image/cube logo.png">
+      <div class="logo-text">CUBE</div>
+      <h2>Sign In</h2>
+      <p>Enter valid user name & password to continue<p>
+      <div class="input-box">
+         <input type="email" placeholder="Email address">
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Password">
+      </div>
+      <div class="small-text"><a onclick="showCard('forgotCard')">Forget password</a></div>
+      <button class="btn">Login</button>
+      <p class="small-text">Or Continue with</p>
+      <div class="social-login">
+        <button>Google</button>
+        <button>Facebook</button>
+      </div>
+      <p class="small-text">Don’t have an account? <a onclick="showCard('signupCard')">Sign Up</a></p>
+    </div>
+
+    <!-- Sign Up -->
+    <div class="card hidden" id="signupCard">
+      <img src="image/cube logo.png">
+      <div class="logo-text">CUBE</div>
+      <h2>Sign Up</h2>
+      <p>Use proper information to continue</p>
+      <div class="input-box">
+        <input type="text" placeholder="Full name">
+      </div>
+      <div class="input-box">
+        <input type="email" placeholder="Email address">
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Password">
+      </div>
+      <button class="btn">Create Account</button>
+      <p class="small-text">Already have an account? <a onclick="showCard('signinCard')">Sign in</a></p>
+    </div>
+
+    <!-- Forget Password -->
+    <div class="card hidden" id="forgotCard">
+      <img src="image/cube logo.png">
+      <div class="logo-text">CUBE</div>
+      <h2>Forget Password</h2>
+      <p>Don’t worry it happens. Please enter the address associate with your account</p>
+      <div class="input-box">
+        <input type="email" placeholder="Email address">
+      </div>
+      <button class="btn">Send OTP</button>
+      <p class="small-text"><a onclick="showCard('signinCard')">Back to Sign in</a></p>
+    </div>
+  </div>
+
+  <script>
+    function showCard(id) {
+      document.querySelectorAll('.card').forEach(card => {
+        card.classList.add('hidden');
+      });
+      document.getElementById(id).classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
